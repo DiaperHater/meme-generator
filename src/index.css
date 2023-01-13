@@ -10,4 +10,8 @@
     .wrapper {
         @apply w-[800px] max-w-full mx-auto px-[36px];
     }
+
+    .bg-gradient {
+      @apply bg-gradient-to-r from-fuchsia-700 to-fuchsia-500;
+    }
   }
