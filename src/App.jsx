@@ -1,12 +1,12 @@
+import Header from './components/Header'
 
-function App() {
+
+export default function App() {
 
 
   return (
     <div>
-      <h1 className="text-red-300">Meme Generator App</h1>
+      <Header title="React Course - Project 3"/>
     </div>
   )
 }
-
-export default App
