@@ -1,5 +1,6 @@
 import React from "react"
 import memesData from "../memesData"
+import Image from "./Image"
 
 export default function Meme() {
 
@@ -14,6 +15,7 @@ export default function Meme() {
         const allImages = memesData.map(item => item.url)
         const randomIndex = Math.floor(Math.random() * allImages.length)
         const randomImageUrl = allImages[randomIndex]
+
         setMeme(prevMeme => ({
             ...prevMeme,
             randomImage: randomImageUrl
@@ -28,11 +30,14 @@ export default function Meme() {
                         <input type="text" name="top-text" id="top-text" className="border flex-grow rounded text-xs p-3" />
                         <input type="text" name="bottom-text" id="bottom-text" className="border flex-grow rounded text-xs p-3"/>
                     </div>
-                    <button className="bg-gradient w-full py-2 text-white font-bold rounded cursor-pointer" onClick={getMemeImage}> 
+                    <button 
+                        className="bg-gradient w-full py-2 text-white font-bold rounded cursor-pointer" 
+                        onClick={getMemeImage}
+                    > 
                         Get a new meme image  🖼
                     </button>
                 </div>
-                <img src={meme.randomImage} alt="" className="w-full"/>
+                <Image url={meme.randomImage}/>
             </div>
         </section>
     )
