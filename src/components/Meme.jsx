@@ -10,7 +10,7 @@ export default function Meme() {
         randomImage: 'https://i.imgflip.com/1ur9b0.jpg'
     }))
 
-    function getMemeImage(event) {
+    function getMemeImage() {
         
         const allImages = memesData.map(item => item.url)
         const randomIndex = Math.floor(Math.random() * allImages.length)
