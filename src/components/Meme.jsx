@@ -5,8 +5,8 @@ import Image from "./Image"
 export default function Meme() {
 
     const [meme, setMeme] = React.useState(() => ({
-        topText: 'top text', 
-        bottomText: 'bottom text',
+        topText: '', 
+        bottomText: '',
         randomImage: 'https://i.imgflip.com/1ur9b0.jpg'
     }))
 
@@ -22,13 +22,34 @@ export default function Meme() {
         }))
     }
 
+    function handleInput(event) {
+        setMeme(preveState => {
+            return {
+                ...preveState,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
     return (
         <section className="py-[36px]">
             <div className="wrapper">
                 <div className="mb-[36px] text-center">
                     <div className="flex space-x-4 mb-4">
-                        <input type="text" name="top-text" id="top-text" className="border flex-grow rounded text-xs p-3" />
-                        <input type="text" name="bottom-text" id="bottom-text" className="border flex-grow rounded text-xs p-3"/>
+                        <input 
+                            type="text" 
+                            className="border flex-grow rounded text-xs p-3" 
+                            name="topText" 
+                            value={meme.topText}
+                            onChange={handleInput}
+                        />
+                        <input 
+                            type="text" 
+                            className="border flex-grow rounded text-xs p-3"
+                            name="bottomText" 
+                            value={meme.bottomText}
+                            onChange={handleInput}
+                        />
                     </div>
                     <button 
                         className="bg-gradient w-full py-2 text-white font-bold rounded cursor-pointer" 
@@ -37,7 +58,11 @@ export default function Meme() {
                         Get a new meme image  🖼
                     </button>
                 </div>
-                <Image url={meme.randomImage}/>
+                <Image 
+                    topText={meme.topText}
+                    bottomText={meme.bottomText}
+                    url={meme.randomImage}
+                />
             </div>
         </section>
     )
